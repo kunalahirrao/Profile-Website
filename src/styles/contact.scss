@@ -1,0 +1,27 @@
+@import "config";
+
+#contact-form {
+  .form-group {
+    margin-bottom: 0px;
+  }
+  & label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  & input,
+  & textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px #ddd solid;
+    &:focus {
+      outline: none;
+      border-color: #f7c08a;
+    }
+  }
+  & textarea {
+    height: 200px;
+  }
+  & button{
+      margin-bottom: 20px;
+  }  
+}

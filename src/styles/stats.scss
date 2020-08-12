@@ -1,0 +1,36 @@
+@import "config";
+
+#home {
+  &-b {
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      li {
+        line-height: 0.5;
+
+        &.stats-title {
+          margin-top: 1rem;
+          font-size: 1.5rem;
+        }
+
+        &.stats-number {
+          font-size: 2rem;
+          font-weight: bold;
+          margin-top: 1rem;
+        }
+      }
+      div{
+          padding:3rem 0;
+          background: $light-color;
+
+          &:nth-child(odd){
+              background: $light-color;
+          }
+          &:nth-child(even){
+              background: $dark-color;
+              color: #fff;
+          }
+      }
+    }
+  }
+}

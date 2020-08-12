@@ -1,0 +1,81 @@
+@import "config";
+
+// Logo
+#logo {
+  width: 70px;
+  height: 70px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+// Main Nav
+#main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  ul {
+    display: flex;
+  }
+  li {
+    padding: 1rem 1.5rem;
+  }
+  a {
+    color: #fff;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px transparent solid;
+    transition: border-color 0.5s;
+    &:hover {
+      border-color: $medium-color;
+    }
+    &.current {
+      border-color: $main-color;
+    }
+  }
+}
+
+// Header
+#header {
+  &-home {
+    background: $bg-image no-repeat center right/cover;
+    height: 100vh;
+    color: #fff;
+    // Header Content
+    .header-content {
+      text-align: center;
+      padding-top: 15%;
+
+      h1 {
+        font-size: 4rem;
+        line-height: 1.2;
+        span.typed-text {
+          color: #fff;
+        }
+        span.cursor {
+          display: inline-block;
+          margin-left: 3px;
+          width: 4px;
+          background-color: #fff;
+          animation: cursorBlink 1s infinite;
+        }
+        span.cursor.typing {
+          animation: none;
+        }
+      }
+    }
+  }
+  &-inner {
+  }
+}
+
+@keyframes cursorBlink {
+  49% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: transparent;
+  }
+  99% {
+    background-color: transparent;
+  }
+}

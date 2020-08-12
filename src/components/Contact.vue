@@ -1,0 +1,61 @@
+<template>
+  <section v-if="form" id="contact-form" class="text-center">
+    <div class="container">
+      <h2 class="section-title">
+        Contact Me
+      </h2>
+      <div class="bottom-line"></div>
+      <form
+        name="contact"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="name" name="name" id="name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea name="email" id="email"></textarea>
+        </div>
+
+        <button class="btn-dark" @click="diContactForm">
+          Cancel
+        </button>
+        <button type="submit" class="btn-dark mx-1">Submit</button>
+      </form>
+    </div>
+  </section>
+</template>
+
+<script>
+import { eventBus } from "../main";
+export default {
+  data() {
+    return {
+      form: false,
+    };
+  },
+  created() {
+    eventBus.$on("formEnabled", (state) => {
+      this.form = state;
+    });
+  },
+  methods: {
+    diContactForm() {
+      this.form = !this.form;
+      eventBus.$emit("disableForm", this.form);
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import "../styles/contact";
+</style>
