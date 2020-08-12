@@ -80,7 +80,7 @@ export default {
         .then(() => {
           this.diContactForm()
         })
-        .catch((e) => {
+        .catch(() => {
          alert("Something went wrong!!!!!!!!!!!!!!");
         });
     },
