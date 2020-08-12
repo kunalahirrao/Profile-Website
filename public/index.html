@@ -10,16 +10,15 @@
   <body>
     <noscript>
       <strong
-        >We're sorry but netlify forms doesn't work
-        properly without JavaScript enabled. Please enable it to
-        continue.</strong
+        >We're sorry but netlify forms doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
       >
     </noscript>
     <form
-      name="contact"      
+      name="contact"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      hidden      
+      hidden
     >
       <input type="hidden" name="form-name" value="contact" />
       <div class="form-group">
@@ -34,7 +33,9 @@
         <label for="message">Message</label>
         <textarea name="message" id="message"></textarea>
       </div>
-
+      <div class="my-1">
+        <div data-netlify-recaptcha="true"></div>
+      </div>
       <button class="btn-dark" @click="diContactForm">
         Cancel
       </button>
