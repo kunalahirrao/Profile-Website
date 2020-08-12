@@ -12,7 +12,7 @@
 #main-nav {
   display: flex;
   justify-content: space-between;
-  padding-top: 1rem;
+  padding-top: 1rem;    
   ul {
     display: flex;
   }
@@ -36,7 +36,7 @@
 
 // Header
 #header {
-  &-home {
+  &-home {   
     background: $bg-image no-repeat center right/cover;
     height: 100vh;
     color: #fff;
@@ -79,3 +79,5 @@
     background-color: transparent;
   }
 }
+
+@import "media"

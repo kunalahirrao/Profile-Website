@@ -29,10 +29,12 @@
             id="message"
           ></textarea>
         </div>
-
+        <div class="my-1">
+           <div data-netlify-recaptcha="true"></div>
+        </div>
         <button class="btn-dark" @click="diContactForm">
           Cancel
-        </button>        
+        </button>
         <button type="submit" class="btn-dark mx-1">Submit</button>
       </form>
     </div>
@@ -45,7 +47,7 @@ export default {
   data() {
     return {
       formState: false,
-      errMessage:"",
+      errMessage: "",
       form: {
         name: "",
         email: "",
@@ -57,7 +59,7 @@ export default {
     eventBus.$on("formEnabled", (state) => {
       this.formState = state;
     });
-  },
+  },  
   methods: {
     encode(data) {
       return Object.keys(data)
@@ -78,15 +80,15 @@ export default {
         }),
       })
         .then(() => {
-          this.diContactForm()
+          this.diContactForm();
         })
         .catch(() => {
-         alert("Something went wrong!!!!!!!!!!!!!!");
+          alert("Something went wrong!!!!!!!!!!!!!!");
         });
     },
     diContactForm() {
       this.formState = !this.formState;
-      this.form = null
+      this.form = null;
       eventBus.$emit("disableForm", this.formState);
     },
   },

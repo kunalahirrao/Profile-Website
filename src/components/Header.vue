@@ -8,7 +8,10 @@
             <a
               :href="`#${item.val}`"
               :class="[currentPage === item.val ? 'current' : '']"
-              @click="currentPage = item.val;enContactForm()"
+              @click="
+                currentPage = item.val;
+                enContactForm();
+              "
               >{{ item.text }}</a
             >
           </li>
@@ -31,7 +34,7 @@
 
 <script>
 import { setTimeout } from "timers";
-import {eventBus} from "../main"
+import { eventBus } from "../main";
 export default {
   name: "Header",
   data() {
@@ -57,15 +60,15 @@ export default {
       newTextDelay: 1000,
       typeArrayIndex: 0,
       charIndex: 0,
-      formState:false
+      formState: false,
     };
   },
   created() {
     setTimeout(this.typeText, this.newTextDelay + 200);
-    eventBus.$on("disableForm",(state)=>{
-      this.formState = state
-    })
-  },
+    eventBus.$on("disableForm", (state) => {    
+      this.formState = state;
+    });
+  }, 
   methods: {
     typeText() {
       if (this.charIndex < this.typeArray[this.typeArrayIndex].length) {
@@ -97,12 +100,10 @@ export default {
         setTimeout(this.typeText, this.typingSpeed + 1000);
       }
     },
-    enContactForm(){
-      console.log("Enable Contact Form")
-      this.formState = !this.formState
-      eventBus.$emit("formEnabled",this.formState)
-    }
-    
+    enContactForm() {
+      this.formState = !this.formState;
+      eventBus.$emit("formEnabled", this.formState);
+    },
   },
 };
 </script>

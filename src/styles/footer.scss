@@ -3,7 +3,7 @@
 #main-footer{
     background: $dark-color;
     color: #fff;
-    height: 5rem;
+    height: 5rem;    
     .footer-content{
         display: flex;
         justify-content: space-between;
@@ -27,3 +27,5 @@
         }
     }
 }
+
+@import "media"
