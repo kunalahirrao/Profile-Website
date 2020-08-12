@@ -23,7 +23,11 @@
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea v-model="form.message" name="message" id="message"></textarea>
+          <textarea
+            v-model="form.message"
+            name="message"
+            id="message"
+          ></textarea>
         </div>
 
         <button class="btn-dark" @click="diContactForm">
@@ -41,11 +45,11 @@ export default {
   data() {
     return {
       formState: false,
-      form:{
-        name:"",
-        email:"",
-        message:""
-      }
+      form: {
+        name: "",
+        email: "",
+        message: "",
+      },
     };
   },
   created() {
@@ -56,14 +60,14 @@ export default {
   methods: {
     encode(data) {
       return Object.keys(data)
-        .map((key) => {
-          `${encodeURIComponent(key)} = ${encodeURIComponent(data[key])}`;
-        })
+        .map(
+          (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
         .join("&");
     },
     handleSubmit() {
       fetch("/", {
-        method: "post",
+        method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
