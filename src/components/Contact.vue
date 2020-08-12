@@ -1,5 +1,5 @@
 <template>
-  <section v-if="form" id="contact-form" class="text-center">
+  <section v-if="formState" id="contact-form" class="text-center">
     <div class="container">
       <h2 class="section-title">
         Contact Me
@@ -10,19 +10,20 @@
         method="post"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
+        @submit.prevent="handleSubmit"
       >
         <input type="hidden" name="form-name" value="contact" />
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="name" name="name" id="name" />
+          <input v-model="form.name" type="name" name="name" id="name" />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" name="email" id="email" />
+          <input v-model="form.email" type="email" name="email" id="email" />
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea name="email" id="email"></textarea>
+          <textarea v-model="form.message" name="message" id="message"></textarea>
         </div>
 
         <button class="btn-dark" @click="diContactForm">
@@ -39,18 +40,48 @@ import { eventBus } from "../main";
 export default {
   data() {
     return {
-      form: false,
+      formState: false,
+      form:{
+        name:"",
+        email:"",
+        message:""
+      }
     };
   },
   created() {
     eventBus.$on("formEnabled", (state) => {
-      this.form = state;
+      this.formState = state;
     });
   },
   methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map((key) => {
+          `${encodeURIComponent(key)} = ${encodeURIComponent(data[key])}`;
+        })
+        .join("&");
+    },
+    handleSubmit() {
+      fetch("/", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: this.encode({
+          "form-name": "contact",
+          ...this.form,
+        }),
+      })
+        .then(() => {
+          console.log("Success");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
     diContactForm() {
-      this.form = !this.form;
-      eventBus.$emit("disableForm", this.form);
+      this.formState = !this.formState;
+      eventBus.$emit("disableForm", this.formState);
     },
   },
 };
