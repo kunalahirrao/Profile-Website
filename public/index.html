@@ -18,8 +18,7 @@
       name="contact"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      hidden
-      data-netlify-recaptcha="true"
+      hidden      
     >
       <input type="hidden" name="form-name" value="contact" />
       <div class="form-group">
@@ -33,10 +32,7 @@
       <div class="form-group">
         <label for="message">Message</label>
         <textarea name="message" id="message"></textarea>
-      </div>
-      <div class="my-1">
-        <div data-netlify-recaptcha="true"></div>
-      </div>
+      </div>      
       <button class="btn-dark" @click="diContactForm">
         Cancel
       </button>

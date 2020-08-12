@@ -9,8 +9,7 @@
         name="contact"
         method="post"
         data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        data-netlify-recaptcha="true"
+        data-netlify-honeypot="bot-field"        
         @submit.prevent="handleSubmit"
       >
         <input type="hidden" name="form-name" value="contact" />
@@ -29,10 +28,7 @@
             name="message"
             id="message"
           ></textarea>
-        </div>
-        <div class="my-1">
-           <div data-netlify-recaptcha="true"></div>
-        </div>
+        </div>        
         <button class="btn-dark" @click="diContactForm">
           Cancel
         </button>
