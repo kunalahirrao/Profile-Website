@@ -32,7 +32,7 @@
 
         <button class="btn-dark" @click="diContactForm">
           Cancel
-        </button>
+        </button>        
         <button type="submit" class="btn-dark mx-1">Submit</button>
       </form>
     </div>
@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       formState: false,
+      errMessage:"",
       form: {
         name: "",
         email: "",
@@ -77,14 +78,15 @@ export default {
         }),
       })
         .then(() => {
-          console.log("Success");
+          this.diContactForm()
         })
         .catch((e) => {
-          console.log(e);
+         alert("Something went wrong!!!!!!!!!!!!!!");
         });
     },
     diContactForm() {
       this.formState = !this.formState;
+      this.form = null
       eventBus.$emit("disableForm", this.formState);
     },
   },
