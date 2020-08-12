@@ -10,6 +10,7 @@
         method="post"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
+        data-netlify-recaptcha="true"
         @submit.prevent="handleSubmit"
       >
         <input type="hidden" name="form-name" value="contact" />
